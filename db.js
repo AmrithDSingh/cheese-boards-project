@@ -17,4 +17,9 @@ const cheese = new sequelize.create({
     title: STRING,
     description: STRING
 })
+newBoard.belongsTo(newUser);
+newUser.hasMany(newBoard);
+
+newUser.belongsToMany(cheese, {through: "newUser_cheese"});
+cheese.belongsToMany(newUser, {through: "newUser_cheese"});
 module.exports = sequelize;
